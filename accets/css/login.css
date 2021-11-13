@@ -1,0 +1,60 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: #ccc;
+    z-index: 999;
+}
+
+.img-login {
+    position: absolute;
+    top: 20px;
+    left: 90px;
+}
+
+.loginAndRegBox {
+    width: 400px;
+    height: 301px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.title-box {
+    height: 60px;
+}
+
+.title-box span {
+    display: block;
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+    color: rgb(25, 185, 231);
+    cursor: default;
+}
+
+.reg-box {
+    display: none;
+    padding: 0px 0;
+}
+
+.form-tent {
+    padding: 10px 30px;
+}
+
+.btnwidth {
+    width: 100%;
+}
+
+.body-box {
+    padding: 18px 0;
+}
+
+.links {
+    display: flex;
+    justify-content: flex-end;
+}
