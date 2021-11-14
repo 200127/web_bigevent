@@ -33,16 +33,15 @@ $(function() {
         fnCheckUser();
         fnCheckPwd();
         fnCheckCpwd();
-
     });
     // login name password
     function fnCheckUsername() {
         // 获取用户输入的数据
         //用户名
         var vals = $loginName.val().trim();
-        if (vals == '') {
+        if (vals === '') {
             alert("账号不能为空");
-            flagUser = false
+            flagUser = false;
             return
         }
     }
@@ -53,9 +52,9 @@ $(function() {
             // 密码正则匹配表达式
         var rePass = /^[\w!-@#$%^&*]{6,20}$/
             // 如果输入框为空，则提示不能为空并return
-        if (vals == '') {
+        if (vals === '') {
             alert('密码不能为空')
-            flagPwd = false
+            flagPwd = false;
             return
         }
         // 正则验证密码输入是否合法
@@ -68,13 +67,14 @@ $(function() {
             alert('密码是6到20位字母、数字，还可包含@!#$%^&*-字符')
             flagPwd = false
         }
+        return
     }
     // reg name password
     function fnCheckUser() {
         // 获取用户输入的数据
         //用户名
         var vals = $user_name.val().trim();
-        if (vals == '') {
+        if (vals === '') {
             alert("账号不能为空");
             flagUser = false
             return
@@ -109,7 +109,7 @@ $(function() {
         // 获取重复密码框输入的数据
         var vals = $pwd.val()
         var cvals = $cpwd.val()
-        if (cvals == '') {
+        if (cvals === '') {
             alert('重复密码框不能为空')
             flagCpwd = false
             return
@@ -126,30 +126,38 @@ $(function() {
 
     // 监听注册表单的提交事件
     $("#form_reg").on('submit', function(e) {
+        var username = $("#exampleInputUsername2").val();
+        var password = $("#exampleInputPassword2").val();
+        var password = $("#exampleInputPassword3").val();
         e.preventDefault();
         $.post('/api/reguser', {
-                username: $("#form_reg [name=username]").val(),
-                password: $("#form_reg [name=password1]").val(),
-                password: $("#form_reg [name=password2]").val(),
+                username,
+                password
             },
             function(res) {
                 if (res.status !== 0) {
                     return alert("注册失败" + res.message);
+                } else {
+                    alert("注册成功");
+                    $("#link_login").click();
                 }
-                alert("注册成功");
-                $("#link_login").click();
             })
     })
 
     // 监听登录表单的提交事件
     $("#form_login").on('submit', function(e) {
+        var username = $("#exampleInputUsername1").val();
+        var password = $("#exampleInputPassword1").val();
         // 阻止默认提交行为
         e.preventDefault();
         $.ajax({
             url: '/api/login',
             method: 'POST',
             // 快速获取表单中的数据
-            data: $(this).serialize(),
+            data: {
+                username,
+                password
+            },
             success: function(res) {
                 if (res.status !== 0) {
                     return alert("登录失败");
