@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../accets/lib/layui.css">
+    <link rel="stylesheet" href="../accets/css/user/user_info.css">
+</head>
+
+<body>
+    <!-- 卡片区域 -->
+    <div class="layui-card">
+        <div class="layui-card-header">修改用户信息</div>
+        <div class="layui-card-body">
+
+            <!-- form表单区域 -->
+            <form class="layui-form">
+                <!-- 这是隐藏域 -->
+                <input type="hidden" id="ids" name="id" value="" />
+                <!-- 登录名称 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">登录名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="username" name="username" required placeholder="请输入登录名称" autocomplete="off" class="layui-input" readonly/>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="nickname" name="nickname" required placeholder="请输入用户名称" autocomplete="off" class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户邮箱</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="email" name="email" required placeholder="请输入用户邮箱" autocomplete="off" class="layui-input" />
+                    </div>
+                </div>
+                <!-- 按钮 -->
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button id="btnRevise" class="layui-btn" lay-submit lay-filter="formDemo">提交修改</button>
+                        <button type="reset" id="btnReset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="../accets/lib/jquery.min.js"></script>
+    <script src="../accets/js/baseAPI.js"></script>
+    <script src="../accets/js/user_info.js"></script>
+</body>
+
+</html>

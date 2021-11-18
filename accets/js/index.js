@@ -27,8 +27,10 @@ function getUserInfo() {
                 console.log("请求失败!");
             } else {
                 // 调用渲染用户头像函数
+                console.log("获取成功");
                 renderAvatar(e.data);
             }
+
         },
         // 不论成功还是失败，最终都会调用complete
         // complete: function(res) {
@@ -48,19 +50,20 @@ function getUserInfo() {
 // 渲染头像方法
 function renderAvatar(user) {
     // 1、获取用户名称
+    console.log(user);
 
     var name = user.nickname || user.username;
     // 2、设置欢迎文本
     $("#welcome").html("欢迎&nbsp;&nbsp;" + name + "&nbsp;&nbsp;");
     // 3、按需渲染用户头像
-    if (user.user_pic !== null) {
-        // 渲染img头像
-        $(".layui-nav-img").attr('src', user.user_pic).show();
-        $(".text-avatar").hide();
-    } else {
+    if (user.user_pic === null) {
         // 渲染文字头像 
         $(".layui-nav-img").hide();
         var first = name[0].toUpperCase();
         $(".text-avatar").html(first).show();
+    } else {
+        // 渲染img头像
+        $(".layui-nav-img").attr('src', user.user_pic).show();
+        $(".text-avatar").hide();
     }
 }
